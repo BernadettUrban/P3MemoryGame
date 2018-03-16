@@ -1,8 +1,9 @@
 /*
  * Create a list that holds all of your cards
  */
-let cards = [.document.getElementsByClassName("card")]
-
+let card = document.getElementsByClassName("card");
+let cards = [...card];
+console.log(cards);
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -25,6 +26,17 @@ function shuffle(array) {
     return array;
 }
 
+const deck = document.querySelector(".deck");
+function startGame (){
+    var shuffledCards = shuffle(cards);
+    for (var i= 0; i < shuffledCards.length; i++){
+        [].forEach.call(shuffledCards, function(item) {
+            deck.appendChild(item);
+        });
+    }
+}
+
+document.body.onload = startGame();
 
 /*
  * set up the event listener for a card. If a card is clicked:
