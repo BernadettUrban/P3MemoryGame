@@ -116,11 +116,25 @@ let moves = 0;
 let counter = document.querySelector(".moves");
 counter.textContent = "0";
 
+//stars 
+const stars = document.querySelectorAll(".fa-star");
+
 function moveCounter(){   
     moves++;    
     counter.innerHTML = moves;
     if (moves == 1){
         startTimer();
+    }
+
+    //star rating based on moves
+    if(moves == 14){
+        stars[2].style.visibility = "collapse";
+    }
+    else if (moves == 20){
+        stars[1].style.visibility = "collapse";
+    }
+    else {
+        stars[0].style.visibility = "collapse";
     }
 }
 
