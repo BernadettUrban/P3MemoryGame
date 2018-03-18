@@ -35,6 +35,10 @@ function startGame (){
         });
         cards[i].classList.remove("show", "open", "match");
     }
+    //reset timer
+    var timer = document.querySelector(".timer");
+    timer.innerHTML = "0 mins 0 secs";
+    clearInterval(interval);
 }
 
 document.body.onload = startGame();
@@ -49,8 +53,6 @@ document.body.onload = startGame();
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
-
 
  //display the card's symbol
  function displaySymbol (){
@@ -117,6 +119,28 @@ counter.textContent = "0";
 function moveCounter(){   
     moves++;    
     counter.innerHTML = moves;
+    if (moves == 1){
+        startTimer();
+    }
+}
+
+//timer
+var second = 0, minute = 0;
+var timer = document.querySelector(".timer");
+var interval;
+function startTimer(){
+    interval = setInterval(function(){
+        timer.innerHTML = minute+"mins "+second+"secs";
+        second++;
+        if(second == 60){
+            minute++;
+            second = 0;
+        }
+        if(minute == 60){
+            hour++;
+            minute = 0;
+        }
+    },1000);
 }
 
  // add event listeners to each card
