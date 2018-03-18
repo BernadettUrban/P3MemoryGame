@@ -64,6 +64,7 @@ document.body.onload = startGame();
     openedCards.push(this);
     var len = openedCards.length;
     if(len === 2){
+        moveCounter();
         if (openedCards[0].type === openedCards[1].type){
             matched();
         } else {
@@ -105,6 +106,17 @@ function enable(){
             matchedCard[i].classList.add("disabled");
         }
     });
+}
+
+
+// declaring moves variable
+let moves = 0;
+let counter = document.querySelector(".moves");
+counter.textContent = "0";
+
+function moveCounter(){   
+    moves++;    
+    counter.innerHTML = moves;
 }
 
  // add event listeners to each card
