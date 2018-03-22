@@ -4,6 +4,15 @@
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 console.log(cards);
+
+// declaring variables
+let moves = 0;
+let counter = document.querySelector(".moves");
+
+
+const stars = document.querySelectorAll(".fa-star");
+
+ let starsList = document.querySelectorAll(".stars li");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -33,13 +42,24 @@ function startGame (){
         [].forEach.call(shuffledCards, function(item) {
             deck.appendChild(item);
         });
-        cards[i].classList.remove("show", "open", "match");
+        cards[i].classList.remove("show", "open", "match", "disabled");
     }
+	//reset rating
+	for (var i= 0; i < stars.length; i++){
+        stars[i].style.color = "#ffd500";
+        stars[i].style.visibility = "visible";
+    }
+	//reset moves
+	moves = 0;
+    counter.innerHTML = moves;
+	
     //reset timer
     var timer = document.querySelector(".timer");
     timer.innerHTML = "0 mins 0 secs";
     clearInterval(interval);
+	
 }
+
 
 document.body.onload = startGame();
 
@@ -111,13 +131,7 @@ function enable(){
 }
 
 
-// declaring moves variable
-let moves = 0;
-let counter = document.querySelector(".moves");
-counter.textContent = "0";
 
-//stars 
-const stars = document.querySelectorAll(".fa-star");
 
 function moveCounter(){   
     moves++;    
@@ -133,9 +147,7 @@ function moveCounter(){
     else if (moves == 20){
         stars[1].style.visibility = "collapse";
     }
-    else {
-        stars[0].style.visibility = "collapse";
-    }
+   
 }
 
 //timer
@@ -159,10 +171,12 @@ function startTimer(){
 
 //modal
 let modal = document.getElementById("popup1")
-//stars list
- let starsList = document.querySelectorAll(".stars li");
+
 //close icon in modal
  let closeicon = document.querySelector(".close");
+
+let playAgainButton = document.getElementById("play-again");
+
 //congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
     if (matchedCard.length == 16){
@@ -178,8 +192,11 @@ function congratulations(){
     document.getElementById("totalTime").innerHTML = finalTime;
     //closeicon on modal
     closeModal();
+	//play again? button	
+	playAgain();
     };
 }
+
 
 //close icon on modal
 function closeModal(){
@@ -188,11 +205,18 @@ function closeModal(){
         startGame();
     });
 }
+
+
+
 //for player to play Again 
 function playAgain(){
-    modal.classList.remove("show");
-    startGame();
+	playAgainButton.addEventListener("click", function(e){
+		modal.classList.remove("show");
+		startGame();
+	});
 }
+
+
 
  // add event listeners to each card
  for (var i = 0; i < cards.length; i++){
