@@ -18,7 +18,7 @@ body {
 
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .container {
@@ -76,8 +76,12 @@ h1 {
 }
 
 .deck .card.match {
+	animation-name: jelly;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
     cursor: default;
-    background: #02cc45;
+    background: #02cc45; 
     font-size: 33px;
 }
 
@@ -86,6 +90,7 @@ h1 {
 	-webkit-backface-visibility: visible !important;
 	backface-visibility: visible !important;
 	animation-duration: .75s;
+	cursor: default;
 	background: #e2043b;
 }
 
@@ -155,7 +160,7 @@ h1 {
 	width: 85%;
 	position: relative;
 	transition: all 5s ease-in-out;
-	font-family: 'Gloria Hallelujah', cursive;
+	font-family: 'Open Sans', sans-serif;
 }
   
 .popup h2 {
@@ -176,7 +181,7 @@ h1 {
 }
 
 .popup .close:hover {
-	color: #E5F720;
+	color: #e2043b);
 }
 
 .popup .content-1,
@@ -196,13 +201,63 @@ h1 {
 }
 
 #play-again {
-	background-color: #eb2617;
+	background-color: #30eb17;;
 	padding: 0.7rem 1rem;
 	font-size: 1.1rem;
 	display: block;
 	margin: 0 auto;
 	width: 50%;
-	font-family: 'Coda', cursive;
+	font-family: 'Open Sans', sans-serif;
 	color: #ffffff;
 	border-radius: 5px;
 }
+
+/****** Animations****/
+
+@keyframes jelly {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, .95, 1);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes pulse {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+/****** Media queries****/
+
+
