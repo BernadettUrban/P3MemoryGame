@@ -266,29 +266,6 @@ h1 {
 Media queries
 ****/
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-
-	
-	.deck{
-		width: 95%;
-		height: auto;
-	}
-	
-	.deck .card {
-		height: 4.7rem;
-		width: 4.7rem;
-		
-	}
-	.score-panel{
-		font-size: 22px;
-		width: 85%;
-		
-	}
-	.score-panel .restart{
-		font-size: 48px;
-	}
-} 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -331,6 +308,32 @@ Media queries
 
 	.popup {
 		width: 60%;
+	
+} 
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+	
+	.deck{
+		width: 95%;
+		height: auto;
+	}
+	
+	.deck .card {
+		height: 4.7rem;
+		width: 4.7rem;
+		
+	}
+	.score-panel{
+		font-size: 22px;
+		width: 85%;
+		
+	}
+	.score-panel .restart{
+		font-size: 48px;
+	}
 	}
 	#play-again {
 		font-size: 42px;
@@ -339,5 +342,4 @@ Media queries
 		font-size: 48px;
 	}
 } 
-
 
