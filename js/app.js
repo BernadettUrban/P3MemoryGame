@@ -1,26 +1,23 @@
 /*
- * Create a list that holds all of your cards
+ * @description: Create a list that holds all of your cards
  */
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 console.log(cards);
 
-// declaring variables
+// @param: declaring variables
 let moves = 0;
 let counter = document.querySelector(".moves");
-
-
 const stars = document.querySelectorAll(".fa-star");
-
- let starsList = document.querySelectorAll(".stars li");
+let starsList = document.querySelectorAll(".stars li");
 /*
- * Display the cards on the page
+ * @description: Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+// @constructor: Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -35,17 +32,19 @@ function shuffle(array) {
     return array;
 }
 
+
 const deck = document.querySelector(".deck");
+//@constructor: start new game
 function startGame (){
-    var shuffledCards = shuffle(cards);
-    for (var i= 0; i < shuffledCards.length; i++){
+    let shuffledCards = shuffle(cards);
+    for (let i= 0; i < shuffledCards.length; i++){
         [].forEach.call(shuffledCards, function(item) {
             deck.appendChild(item);
         });
         cards[i].classList.remove("show", "open", "match", "disabled");
     }
 	//reset rating
-	for (var i= 0; i < stars.length; i++){
+	for (let i= 0; i < stars.length; i++){
         stars[i].style.color = "#ffd500";
         stars[i].style.visibility = "visible";
     }
@@ -54,10 +53,9 @@ function startGame (){
     counter.innerHTML = moves;
 	
     //reset timer
-    var timer = document.querySelector(".timer");
+    let timer = document.querySelector(".timer");
     timer.innerHTML = "0 mins 0 secs";
     clearInterval(interval);
-	
 }
 
 
@@ -74,17 +72,18 @@ document.body.onload = startGame();
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- //display the card's symbol
+ //@constructor: display the card's symbol
  function displaySymbol (){
     this.classList.toggle("open");
     this.classList.toggle("show");
     this.classList.toggle("disabled");
  };
 
- var openedCards = [];
- function openCards(){
+ let openedCards = [];
+//@constructor: check if two cards are a match or not
+ function checkMatch(){
     openedCards.push(this);
-    var len = openedCards.length;
+    let len = openedCards.length;
     if(len === 2){
         moveCounter();
         if (openedCards[0].type === openedCards[1].type){
@@ -94,8 +93,9 @@ document.body.onload = startGame();
         }
     }  
  };
-
+//@param 
  let matchedCard = document.getElementsByClassName("match");
+//@constructor: adds matched cards to the que
  function matched(){
     openedCards[0].classList.add("match");
     openedCards[1].classList.add("match");
@@ -104,6 +104,7 @@ document.body.onload = startGame();
     openedCards = [];
 };
 
+//@constructor: handles unmatched cards
 function unmatched(){
     openedCards[0].classList.add("unmatched");
     openedCards[1].classList.add("unmatched");
@@ -116,23 +117,23 @@ function unmatched(){
     },1100);
 }
 
+//@constructor: disables unmatched cards for clicks
 function disable(){
     Array.prototype.filter.call(cards, function(card){
         card.classList.add('disabled');
     });
 }
+//@constructor: enables unmatched cards for clicks
 function enable(){
     Array.prototype.filter.call(cards, function(card){
         card.classList.remove('disabled');
-        for(var i = 0; i < matchedCard.length; i++){
+        for(let i = 0; i < matchedCard.length; i++){
             matchedCard[i].classList.add("disabled");
         }
     });
 }
 
-
-
-
+//@constructor: counts moves 
 function moveCounter(){   
     moves++;    
     counter.innerHTML = moves;
@@ -140,7 +141,7 @@ function moveCounter(){
         startTimer();
     }
 
-    //star rating based on moves
+    //@param: star rating based on moves
     if(moves == 14){
         stars[2].style.visibility = "collapse";
     }
@@ -150,10 +151,13 @@ function moveCounter(){
    
 }
 
-//timer
-var second = 0, minute = 0;
-var timer = document.querySelector(".timer");
+
+//@param:
+let second = 0;
+let minute = 0;
 var interval;
+let timer = document.querySelector(".timer");
+//@constructor:timer
 function startTimer(){
     interval = setInterval(function(){
         timer.innerHTML = minute+"mins "+second+"secs";
@@ -169,24 +173,24 @@ function startTimer(){
     },1000);
 }
 
-//modal
+// congratulations modal
 let modal = document.getElementById("popup1")
 
-//close icon in modal
- let closeicon = document.querySelector(".close");
+//@param: close icon and play again button in modal
+let closeicon = document.querySelector(".close");
 
 let playAgainButton = document.getElementById("play-again");
 
-//congratulations when all cards match, show modal and moves, time and rating
+//@constructor: congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
     if (matchedCard.length == 16){
         clearInterval(interval);
         finalTime = timer.innerHTML;
     //show congratulations modal
     modal.classList.add("show");
-    //declare star rating variable
-    var starRating = document.querySelector(".stars").innerHTML;
-    //showing move, rating, time on modal
+    //@param: declare star rating variable
+    let starRating = document.querySelector(".stars").innerHTML;
+    // @param: showing move, rating, time on modal
     document.getElementById("finalMove").innerHTML = moves;
     document.getElementById("starRating").innerHTML = starRating;
     document.getElementById("totalTime").innerHTML = finalTime;
@@ -198,7 +202,7 @@ function congratulations(){
 }
 
 
-//close icon on modal
+//@constructor: close modal
 function closeModal(){
     closeicon.addEventListener("click", function(e){
         modal.classList.remove("show");
@@ -207,8 +211,7 @@ function closeModal(){
 }
 
 
-
-//for player to play Again 
+//@constructor: play Again button
 function playAgain(){
 	playAgainButton.addEventListener("click", function(e){
 		modal.classList.remove("show");
@@ -217,10 +220,9 @@ function playAgain(){
 }
 
 
-
  // add event listeners to each card
- for (var i = 0; i < cards.length; i++){
+ for (let i = 0; i < cards.length; i++){
     cards[i].addEventListener("click", displaySymbol);
-    cards[i].addEventListener("click", openCards);
+    cards[i].addEventListener("click", checkMatch);
     cards[i].addEventListener("click", congratulations);
  };
