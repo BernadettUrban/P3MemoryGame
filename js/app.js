@@ -10,6 +10,14 @@ let moves = 0;
 let counter = document.querySelector(".moves");
 const stars = document.querySelectorAll(".fa-star");
 let starsList = document.querySelectorAll(".stars li");
+let openedCards = [];
+//@param 
+let matchedCard = document.getElementsByClassName("match");
+//@param:
+let second = 0;
+let minute = 0;
+let interval;
+let timer = document.querySelector(".timer");
 /*
  * @description: Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -36,6 +44,7 @@ function shuffle(array) {
 const deck = document.querySelector(".deck");
 //@constructor: start new game
 function startGame (){
+    openedCards = [];
     let shuffledCards = shuffle(cards);
     for (let i= 0; i < shuffledCards.length; i++){
         [].forEach.call(shuffledCards, function(item) {
@@ -79,7 +88,7 @@ document.body.onload = startGame();
     this.classList.toggle("disabled");
  };
 
- let openedCards = [];
+
 //@constructor: check if two cards are a match or not
  function checkMatch(){
     openedCards.push(this);
@@ -93,8 +102,7 @@ document.body.onload = startGame();
         }
     }  
  };
-//@param 
- let matchedCard = document.getElementsByClassName("match");
+
 //@constructor: adds matched cards to the que
  function matched(){
     openedCards[0].classList.add("match");
@@ -152,11 +160,7 @@ function moveCounter(){
 }
 
 
-//@param:
-let second = 0;
-let minute = 0;
-var interval;
-let timer = document.querySelector(".timer");
+
 //@constructor:timer
 function startTimer(){
     interval = setInterval(function(){
