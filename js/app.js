@@ -3,7 +3,6 @@
  */
 let card = document.getElementsByClassName("card");
 let cards = [...card];
-console.log(cards);
 
 // @param: declaring variables
 let moves = 0;
@@ -11,9 +10,10 @@ let counter = document.querySelector(".moves");
 const stars = document.querySelectorAll(".fa-star");
 let starsList = document.querySelectorAll(".stars li");
 let openedCards = [];
-//@param 
+
 let matchedCard = document.getElementsByClassName("match");
-//@param:
+const deck = document.querySelector(".deck");
+
 let second = 0;
 let minute = 0;
 let interval;
@@ -40,8 +40,6 @@ function shuffle(array) {
     return array;
 }
 
-
-const deck = document.querySelector(".deck");
 //@constructor: start new game
 function startGame (){
     openedCards = [];
@@ -159,8 +157,6 @@ function moveCounter(){
    
 }
 
-
-
 //@constructor:timer
 function startTimer(){
     interval = setInterval(function(){
@@ -205,7 +201,6 @@ function congratulations(){
     };
 }
 
-
 //@constructor: close modal
 function closeModal(){
     closeicon.addEventListener("click", function(e){
@@ -214,7 +209,6 @@ function closeModal(){
     });
 }
 
-
 //@constructor: play Again button
 function playAgain(){
 	playAgainButton.addEventListener("click", function(e){
@@ -222,7 +216,6 @@ function playAgain(){
 		startGame();
 	});
 }
-
 
  // add event listeners to each card
  for (let i = 0; i < cards.length; i++){
