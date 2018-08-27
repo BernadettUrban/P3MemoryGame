@@ -2,6 +2,8 @@
 
 Part of the Udacity FEND Nanodegree.  
 <a target="_blank" href="https://github.com/udacity/fend-project-memory-game">The Memory Game project repository on GitHub</a> was used to develop the app.
+https://d17h27t6h515a5.cloudfront.net/topher/2017/February/589bb972_screen-shot-2017-02-07-at-3.03.15-pm/screen-shot-2017-02-07-at-3.03.15-pm.png
+
 ## How to play :
 1.	Download the repository
 2.	Extract the .zip file
