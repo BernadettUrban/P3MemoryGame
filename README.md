@@ -1,5 +1,7 @@
-# Matching Game Project
+# Memory Game Project
 
+Part of the Udacity FEND Nanodegree. Starter code  
+<a target="_blank" href="https://github.com/udacity/fend-project-memory-game">the Memory Game project repository on GitHub</a> was used to develop the app.
 ## How to play :
 1.	Download the repository
 2.	Extract the .zip file
